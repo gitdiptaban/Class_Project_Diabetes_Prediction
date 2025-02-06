@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Diabetes Prediction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Enter Patient Data</h2>
+
+  <!-- User Input Fields -->
+  <ion-list>
+    <ion-item *ngFor="let feature of featuresList; let i = index">
+      <ion-label position="stacked">{{ feature.label }}</ion-label>
+      <ion-input type="number" [(ngModel)]="features[i]" placeholder="Enter {{ feature.label }}"></ion-input>
+      <ion-text color="medium">
+        <p>{{ feature.description }}</p>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+
+  <!-- Submit Button -->
+  <ion-button expand="full" (click)="predict()">Predict Disease Progression</ion-button>
+
+  <!-- Show loading spinner while waiting for prediction -->
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+
+  <!-- Display Prediction Result -->
+  <ion-card *ngIf="prediction !== null">
+    <ion-card-header>
+      <ion-card-title>Disease Progression Prediction</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>
+        <b>{{ prediction }}</b>
+      </h2>
+      <p>Higher values indicate more severe diabetes progression.</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

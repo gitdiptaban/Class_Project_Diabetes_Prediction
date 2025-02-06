@@ -1,0 +1,7 @@
+{
+  "name": "mlPredictor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
